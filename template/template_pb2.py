@@ -20,12 +20,49 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='template.proto',
   package='template',
   syntax='proto3',
-  serialized_pb=_b('\n\x0etemplate.proto\x12\x08template\x1a\x0b\x65rror.proto\"\x91\x01\n\x17GenerateTemplateRequest\x12\x12\n\ntemplateId\x18\x01 \x01(\t\x12:\n\x06params\x18\x02 \x03(\x0b\x32*.template.GenerateTemplateRequest.KeyValue\x1a&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"Y\n\x18GenerateTemplateResponse\x12 \n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0f.template.ErrorH\x00\x12\x10\n\x06result\x18\x02 \x01(\tH\x00\x42\t\n\x07\x63ontent2g\n\x08Template\x12[\n\x10GenerateTemplate\x12!.template.GenerateTemplateRequest\x1a\".template.GenerateTemplateResponse(\x01\x62\x06proto3')
+  serialized_pb=_b('\n\x0etemplate.proto\x12\x08template\x1a\x0b\x65rror.proto\"\xf2\x01\n\x17GenerateTemplateRequest\x12\x12\n\ntemplateId\x18\x01 \x01(\t\x12\x36\n\x05\x63hunk\x18\x03 \x01(\x0b\x32\'.template.GenerateTemplateRequest.Chunk\x12:\n\x06params\x18\x02 \x03(\x0b\x32*.template.GenerateTemplateRequest.KeyValue\x1a\'\n\x05\x43hunk\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x03\x1a&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"Y\n\x18GenerateTemplateResponse\x12 \n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0f.template.ErrorH\x00\x12\x10\n\x06result\x18\x02 \x01(\tH\x00\x42\t\n\x07\x63ontent2e\n\x08Template\x12Y\n\x10GenerateTemplate\x12!.template.GenerateTemplateRequest\x1a\".template.GenerateTemplateResponseb\x06proto3')
   ,
   dependencies=[error__pb2.DESCRIPTOR,])
 
 
 
+
+_GENERATETEMPLATEREQUEST_CHUNK = _descriptor.Descriptor(
+  name='Chunk',
+  full_name='template.GenerateTemplateRequest.Chunk',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='data', full_name='template.GenerateTemplateRequest.Chunk.data', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='position', full_name='template.GenerateTemplateRequest.Chunk.position', index=1,
+      number=2, type=3, cpp_type=2, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=205,
+  serialized_end=244,
+)
 
 _GENERATETEMPLATEREQUEST_KEYVALUE = _descriptor.Descriptor(
   name='KeyValue',
@@ -60,8 +97,8 @@ _GENERATETEMPLATEREQUEST_KEYVALUE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=149,
-  serialized_end=187,
+  serialized_start=246,
+  serialized_end=284,
 )
 
 _GENERATETEMPLATEREQUEST = _descriptor.Descriptor(
@@ -79,7 +116,14 @@ _GENERATETEMPLATEREQUEST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='params', full_name='template.GenerateTemplateRequest.params', index=1,
+      name='chunk', full_name='template.GenerateTemplateRequest.chunk', index=1,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='params', full_name='template.GenerateTemplateRequest.params', index=2,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -88,7 +132,7 @@ _GENERATETEMPLATEREQUEST = _descriptor.Descriptor(
   ],
   extensions=[
   ],
-  nested_types=[_GENERATETEMPLATEREQUEST_KEYVALUE, ],
+  nested_types=[_GENERATETEMPLATEREQUEST_CHUNK, _GENERATETEMPLATEREQUEST_KEYVALUE, ],
   enum_types=[
   ],
   options=None,
@@ -98,7 +142,7 @@ _GENERATETEMPLATEREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=42,
-  serialized_end=187,
+  serialized_end=284,
 )
 
 
@@ -138,11 +182,13 @@ _GENERATETEMPLATERESPONSE = _descriptor.Descriptor(
       name='content', full_name='template.GenerateTemplateResponse.content',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=189,
-  serialized_end=278,
+  serialized_start=286,
+  serialized_end=375,
 )
 
+_GENERATETEMPLATEREQUEST_CHUNK.containing_type = _GENERATETEMPLATEREQUEST
 _GENERATETEMPLATEREQUEST_KEYVALUE.containing_type = _GENERATETEMPLATEREQUEST
+_GENERATETEMPLATEREQUEST.fields_by_name['chunk'].message_type = _GENERATETEMPLATEREQUEST_CHUNK
 _GENERATETEMPLATEREQUEST.fields_by_name['params'].message_type = _GENERATETEMPLATEREQUEST_KEYVALUE
 _GENERATETEMPLATERESPONSE.fields_by_name['error'].message_type = error__pb2._ERROR
 _GENERATETEMPLATERESPONSE.oneofs_by_name['content'].fields.append(
@@ -157,6 +203,13 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GenerateTemplateRequest = _reflection.GeneratedProtocolMessageType('GenerateTemplateRequest', (_message.Message,), dict(
 
+  Chunk = _reflection.GeneratedProtocolMessageType('Chunk', (_message.Message,), dict(
+    DESCRIPTOR = _GENERATETEMPLATEREQUEST_CHUNK,
+    __module__ = 'template_pb2'
+    # @@protoc_insertion_point(class_scope:template.GenerateTemplateRequest.Chunk)
+    ))
+  ,
+
   KeyValue = _reflection.GeneratedProtocolMessageType('KeyValue', (_message.Message,), dict(
     DESCRIPTOR = _GENERATETEMPLATEREQUEST_KEYVALUE,
     __module__ = 'template_pb2'
@@ -168,6 +221,7 @@ GenerateTemplateRequest = _reflection.GeneratedProtocolMessageType('GenerateTemp
   # @@protoc_insertion_point(class_scope:template.GenerateTemplateRequest)
   ))
 _sym_db.RegisterMessage(GenerateTemplateRequest)
+_sym_db.RegisterMessage(GenerateTemplateRequest.Chunk)
 _sym_db.RegisterMessage(GenerateTemplateRequest.KeyValue)
 
 GenerateTemplateResponse = _reflection.GeneratedProtocolMessageType('GenerateTemplateResponse', (_message.Message,), dict(

@@ -7,7 +7,7 @@ package template;
 
 service Template {
 
-    rpc GenerateTemplate(stream GenerateTemplateRequest) returns (GenerateTemplateResponse);
+    rpc GenerateTemplate(GenerateTemplateRequest) returns (GenerateTemplateResponse);
 }
 
 message GenerateTemplateRequest {
