@@ -23,6 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   serialized_pb=_b('\n\x0etemplate.proto\x12\x08template\x1a\x0b\x65rror.proto\"\xf2\x01\n\x17GenerateTemplateRequest\x12\x12\n\ntemplateId\x18\x01 \x01(\t\x12\x36\n\x05\x63hunk\x18\x03 \x01(\x0b\x32\'.template.GenerateTemplateRequest.Chunk\x12:\n\x06params\x18\x02 \x03(\x0b\x32*.template.GenerateTemplateRequest.KeyValue\x1a\'\n\x05\x43hunk\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x10\n\x08position\x18\x02 \x01(\x03\x1a&\n\x08KeyValue\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t\"Y\n\x18GenerateTemplateResponse\x12 \n\x05\x65rror\x18\x01 \x01(\x0b\x32\x0f.template.ErrorH\x00\x12\x10\n\x06result\x18\x02 \x01(\tH\x00\x42\t\n\x07\x63ontent2e\n\x08Template\x12Y\n\x10GenerateTemplate\x12!.template.GenerateTemplateRequest\x1a\".template.GenerateTemplateResponseb\x06proto3')
   ,
   dependencies=[error__pb2.DESCRIPTOR,])
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -199,7 +200,6 @@ _GENERATETEMPLATERESPONSE.oneofs_by_name['content'].fields.append(
 _GENERATETEMPLATERESPONSE.fields_by_name['result'].containing_oneof = _GENERATETEMPLATERESPONSE.oneofs_by_name['content']
 DESCRIPTOR.message_types_by_name['GenerateTemplateRequest'] = _GENERATETEMPLATEREQUEST
 DESCRIPTOR.message_types_by_name['GenerateTemplateResponse'] = _GENERATETEMPLATERESPONSE
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 GenerateTemplateRequest = _reflection.GeneratedProtocolMessageType('GenerateTemplateRequest', (_message.Message,), dict(
 
@@ -232,4 +232,109 @@ GenerateTemplateResponse = _reflection.GeneratedProtocolMessageType('GenerateTem
 _sym_db.RegisterMessage(GenerateTemplateResponse)
 
 
+try:
+  # THESE ELEMENTS WILL BE DEPRECATED.
+  # Please use the generated *_pb2_grpc.py files instead.
+  import grpc
+  from grpc.beta import implementations as beta_implementations
+  from grpc.beta import interfaces as beta_interfaces
+  from grpc.framework.common import cardinality
+  from grpc.framework.interfaces.face import utilities as face_utilities
+
+
+  class TemplateStub(object):
+
+    def __init__(self, channel):
+      """Constructor.
+
+      Args:
+        channel: A grpc.Channel.
+      """
+      self.GenerateTemplate = channel.unary_unary(
+          '/template.Template/GenerateTemplate',
+          request_serializer=GenerateTemplateRequest.SerializeToString,
+          response_deserializer=GenerateTemplateResponse.FromString,
+          )
+
+
+  class TemplateServicer(object):
+
+    def GenerateTemplate(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+
+  def add_TemplateServicer_to_server(servicer, server):
+    rpc_method_handlers = {
+        'GenerateTemplate': grpc.unary_unary_rpc_method_handler(
+            servicer.GenerateTemplate,
+            request_deserializer=GenerateTemplateRequest.FromString,
+            response_serializer=GenerateTemplateResponse.SerializeToString,
+        ),
+    }
+    generic_handler = grpc.method_handlers_generic_handler(
+        'template.Template', rpc_method_handlers)
+    server.add_generic_rpc_handlers((generic_handler,))
+
+
+  class BetaTemplateServicer(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def GenerateTemplate(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+
+
+  class BetaTemplateStub(object):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This class was generated
+    only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    def GenerateTemplate(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    GenerateTemplate.future = None
+
+
+  def beta_create_Template_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_deserializers = {
+      ('template.Template', 'GenerateTemplate'): GenerateTemplateRequest.FromString,
+    }
+    response_serializers = {
+      ('template.Template', 'GenerateTemplate'): GenerateTemplateResponse.SerializeToString,
+    }
+    method_implementations = {
+      ('template.Template', 'GenerateTemplate'): face_utilities.unary_unary_inline(servicer.GenerateTemplate),
+    }
+    server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
+    return beta_implementations.server(method_implementations, options=server_options)
+
+
+  def beta_create_Template_stub(channel, host=None, metadata_transformer=None, pool=None, pool_size=None):
+    """The Beta API is deprecated for 0.15.0 and later.
+
+    It is recommended to use the GA API (classes and functions in this
+    file not marked beta) for all further purposes. This function was
+    generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
+    request_serializers = {
+      ('template.Template', 'GenerateTemplate'): GenerateTemplateRequest.SerializeToString,
+    }
+    response_deserializers = {
+      ('template.Template', 'GenerateTemplate'): GenerateTemplateResponse.FromString,
+    }
+    cardinalities = {
+      'GenerateTemplate': cardinality.Cardinality.UNARY_UNARY,
+    }
+    stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
+    return beta_implementations.dynamic_stub(channel, 'template.Template', cardinalities, options=stub_options)
+except ImportError:
+  pass
 # @@protoc_insertion_point(module_scope)

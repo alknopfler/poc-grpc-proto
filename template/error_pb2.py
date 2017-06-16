@@ -23,6 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   serialized_pb=_b('\n\x0b\x65rror.proto\x12\x08template\x1a\x19google/protobuf/any.proto\"?\n\x05\x45rror\x12\x0f\n\x07message\x18\x01 \x01(\t\x12%\n\x07\x64\x65tails\x18\x02 \x03(\x0b\x32\x14.google.protobuf.Anyb\x06proto3')
   ,
   dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
+_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
 
@@ -66,7 +67,6 @@ _ERROR = _descriptor.Descriptor(
 
 _ERROR.fields_by_name['details'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 DESCRIPTOR.message_types_by_name['Error'] = _ERROR
-_sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Error = _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), dict(
   DESCRIPTOR = _ERROR,
@@ -76,4 +76,14 @@ Error = _reflection.GeneratedProtocolMessageType('Error', (_message.Message,), d
 _sym_db.RegisterMessage(Error)
 
 
+try:
+  # THESE ELEMENTS WILL BE DEPRECATED.
+  # Please use the generated *_pb2_grpc.py files instead.
+  import grpc
+  from grpc.beta import implementations as beta_implementations
+  from grpc.beta import interfaces as beta_interfaces
+  from grpc.framework.common import cardinality
+  from grpc.framework.interfaces.face import utilities as face_utilities
+except ImportError:
+  pass
 # @@protoc_insertion_point(module_scope)
