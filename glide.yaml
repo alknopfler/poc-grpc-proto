@@ -1,0 +1,6 @@
+package: github.com/SwatLabs/poc-grpc-proto
+import:
+- package: github.com/golang/protobuf
+  subpackages:
+  - proto
+  - protoc-gen-go

@@ -1,0 +1,42 @@
+syntax  =   "proto3";
+
+import "error.proto";
+
+
+package template;
+
+service Template {
+
+    rpc GenerateTemplate(stream GenerateTemplateRequest) returns (GenerateTemplateResponse);
+}
+
+message GenerateTemplateRequest {
+
+    string templateId = 1;
+
+    message Chunk {
+        bytes data = 1;
+        int64 position = 2;
+    }
+
+    message KeyValue {
+
+        string key = 1;
+
+        string value = 2;
+    }
+
+    Chunk chunk = 3;
+
+    repeated KeyValue params = 2;
+
+}
+
+message GenerateTemplateResponse {
+
+    oneof content{
+        Error error = 1;
+        string result = 2;
+    }
+}
+

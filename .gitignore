@@ -1,0 +1,10 @@
+/bin/
+/.gopath/
+/vendor/
+/test/tests.*
+/test/coverage.*
+test
+bin
+.idea
+*.iml
+.bashrc
